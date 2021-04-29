@@ -708,7 +708,7 @@ class Money implements Arrayable, Jsonable, JsonSerializable, Renderable
      *
      * @return string
      */
-    public function format($currency = true)
+    public function format()
     {
         $negative = $this->isNegative();
         $value = $this->getValue();
@@ -719,7 +719,7 @@ class Money implements Arrayable, Jsonable, JsonSerializable, Renderable
         $suffix = $this->currency->getSuffix();
         $value = number_format($amount, 2, $decimals, $thousands);
 
-        return ($negative ? '-' : '').($currency ? $prefix : '').$value.($currency ? $suffix : '');
+        return ($negative ? '-' : '').$prefix.$value.$suffix;
     }
 
     /**
